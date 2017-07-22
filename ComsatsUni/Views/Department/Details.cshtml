@@ -1,0 +1,81 @@
+﻿@model ComsatsUni.Models.Department
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Department</h4>
+    <hr />
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Head)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Head)
+        </dd></dl>*@
+    <table class="table">
+
+        <tr>
+            <th>Department ID</th>
+        </tr>
+        <tr>
+            <td>
+                <text>F00</text>@Html.DisplayFor(model => model.DepartmentID)
+            </td>
+        </tr>
+        <tr>
+            <th>Department Name</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.Title)
+            </td>
+        </tr>
+      
+
+    </table>
+    <br />
+    <h3>Faculty Members</h3>
+    <table class="table">
+        <tr>
+            <th>Staff Title</th>
+            <th>Name</th>
+            <th>Staff ID:</th>
+            
+        </tr>
+        @foreach (var item in Model.Enrollment_Staffs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff_Title)
+                </td>
+            
+
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructor.FirstMidName)
+            @Html.DisplayFor(modelItem => item.Instructor.LastName)
+        </td>
+    
+  
+        <td>
+            <text>R00</text>@Html.DisplayFor(modelItem => item.Instructor.InstructorID)
+        </td>
+    </tr>
+
+        }
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DepartmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

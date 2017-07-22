@@ -1,0 +1,125 @@
+﻿@model ComsatsUni.Models.Instructor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Instructor</h4>
+    <hr />
+    <table class="table">
+
+        <tr>
+            <th>Enrolment ID</th>
+        </tr>
+        <tr>
+            <td>
+                <text>R00</text>@Html.DisplayFor(model => model.InstructorID)
+            </td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.LastName)
+            </td>
+        </tr>
+        <tr>
+            <th>First / Middle Name</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.FirstMidName)
+            </td>
+        </tr>
+        <tr>
+            <th>Enrollment Date</th>
+        </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.EnrollmentDate)
+            </td>
+        </tr>
+
+    </table>
+    <br />
+    <h3>Assosiations</h3>
+    <table class="table">
+        <tr>
+            <th>Profession</th>
+            <th>Department</th>
+        </tr>
+        @foreach (var item in Model.Enrollment_Staffs)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Staff_Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Title)
+                </td>
+            </tr>
+        }
+    </table>
+
+
+
+    @*<dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstMidName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstMidName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnrollmentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnrollmentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Enrollment_Staffs)
+        </dt>
+        <dd>
+            <br /><br />
+            <table class="table">
+                <tr>
+                    <th>Profession</th>
+                    <th>Department</th>
+                </tr>
+                @foreach (var item in Model.Enrollment_Staffs)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Staff_Title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Department.Title)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </dd>
+
+
+    </dl>*@
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.InstructorID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
